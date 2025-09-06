@@ -66,8 +66,8 @@ const App = () => {
                     {menuItems.map((item) => (
                         <motion.li
                             variants={{
-                                hidden: { opacity: 0, x: -20 },
-                                visible: { opacity: 1, x: 0 },
+                                hidden: { opacity: 0, x: -20,},
+                                visible: { opacity: 1, x: 0,  },
                             }}
                             key={item}
                             className=" py-3 hover:bg-white/5 px-3 rounded-md transition-colors"
