@@ -1,0 +1,35 @@
+:root {
+    background: blue;
+}
+
+.container {
+    background-color: hotpink;
+    border-radius: 12px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr); /* column that at least 300px but can grow up to take available space. */
+    grid-template-columns: repeat(3, 1fr); /* repeat 3times equal space */
+    grid-template-columns: 200px 1fr; /* First colum fixed 200px, second takes remaining space */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px
+
+    /* max-width: 50ch */
+}
+
+
+.child {
+    background-color: lightblue;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+
+/* .beautiful-drawer {
+    transform: translateY(var(--y))
+}
+
+@media (min-width: 768px) {
+    .beautiful-drawer {
+        transform: translateX(var(--x));
+    }
+}  */
