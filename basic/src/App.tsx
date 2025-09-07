@@ -1,106 +1,157 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
-import { FaBell } from "react-icons/fa6";
-import { GiBlood } from "react-icons/gi";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
+import {
+  useRef,
+  useState,
+  type ComponentProps,
+  type PropsWithChildren,
+} from "react";
+import React from "react";
 
-const fakeNoti = [
-  {
-    id: 1,
-    timeAgo: "1 hour ago",
-    message: "New module about responsiveness added",
-  },
-  {
-    id: 2,
-    timeAgo: "3 hours ago",
-    message: "Your profile was updated successfully",
-  },
-  {
-    id: 3,
-    timeAgo: "Yesterday",
-    message: "You earned a new achievement badge 🎉",
-  },
-  {
-    id: 4,
-    timeAgo: "2 days ago",
-    message: "System maintenance scheduled for this weekend",
-  },
-];
+type CardProps = {
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+};
 
-const App = () => {
-  const [showNoti, setShowNoti] = useState(true);
+const Card = ({ title, subtitle, imageUrl }: CardProps) => (
+  <div className="h-full bg-white rounded-2xl overflow-clip">
+    <div className="p-4 mb-5 text-center">
+      <h2 className="text-3xl">{title}</h2>
+      <p>{subtitle}</p>
+    </div>
+    <img className="object-cover w-full h-full" src={imageUrl} alt="" />
+  </div>
+);
+
+const ScrollContainer = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="w-full max-w-[300px] mt-4 mx-auto">
-      <button
-        className="rounded-2xl bg-black p-3 mb-4 text-gray-200 transition-colors"
-        onClick={() => setShowNoti((show) => !show)}
-        aria-label="Toggle Noti"
-      >
-        <FaBell />
-      </button>
+    <div
+      ref={containerRef}
+      className="h-[500px] w-full overflow-y-scroll border border-gray-400 rounded-xl"
+    >
+      <div className="h-[300px] flex gap-8 p-8 space-y-8">
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Inside container"
+            subtitle="Scroll me into view!"
+            imageUrl="/img/courses/framer-motion/product-1.webp"
+          />
+        </FadeIn>
 
-      <AnimatePresence initial={false}>
-        {showNoti && (
-            <motion.div
-            className="w-full max-w-[300px] rounded-2xl border border-gray-300 bg-white text-black shadow-xl"
-            variants={{
-                open: {
-                    opacity: 1,
-                    // y: 0,
-                    transition: {
-                        staggerChildren: 0.1
-                    }
-                },
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Another card"
+            subtitle="Still tracked inside container"
+            imageUrl="/img/courses/framer-motion/product-2.webp"
+          />
+        </FadeIn>
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Inside container"
+            subtitle="Scroll me into view!"
+            imageUrl="/img/courses/framer-motion/product-1.webp"
+          />
+        </FadeIn>
 
-                closed: {
-                    opacity: 0,
-                    // y: 20,
-                        transition: {
-                        staggerChildren: 0.04,
-                        staggerDirection: -1
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Another card"
+            subtitle="Still tracked inside container"
+            imageUrl="/img/courses/framer-motion/product-2.webp"
+          />
+        </FadeIn>
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Inside container"
+            subtitle="Scroll me into view!"
+            imageUrl="/img/courses/framer-motion/product-1.webp"
+          />
+        </FadeIn>
 
-                    }
-                    
-                }
-            }}
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Another card"
+            subtitle="Still tracked inside container"
+            imageUrl="/img/courses/framer-motion/product-2.webp"
+          />
+        </FadeIn>
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Inside container"
+            subtitle="Scroll me into view!"
+            imageUrl="/img/courses/framer-motion/product-1.webp"
+          />
+        </FadeIn>
 
-            initial="closed"
-            animate="open"
-            exit="closed"
-            >
-          <header className="border-b border-gray-300 px-5 py-3 text-md font-bold">
-            <p>Notifications</p>
-          </header>
-          <ul className="m-0 divide-y divide-gray-300 overflow-hidden p-0">
-            {fakeNoti.map((notification) => (
-                <motion.li
-                variants={{
-                    open: {
-                        opacity: 1,
-                         "--x": "0px", "--y": "0px"
-                    },
-                    closed: {
-                        opacity: 0, "--x": "30px", "--y": "30px"
-                    }
-                }}
-                
-                className="flex items-center gap-4 px-5 py-3 leading-tight max-sm:translate-x-[var(--x)] md:translate-y-[var(--y)]"
-                key={notification.id}
-              >
-                <GiBlood />
-                <div>
-                  <p className="mb-2 text-md">{notification.message}</p>
-                  <p className="text-sm opacity-80">{notification.timeAgo}</p>
-                </div>
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
-      </AnimatePresence>
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Another card"
+            subtitle="Still tracked inside container"
+            imageUrl="/img/courses/framer-motion/product-2.webp"
+          />
+        </FadeIn>
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Inside container"
+            subtitle="Scroll me into view!"
+            imageUrl="/img/courses/framer-motion/product-1.webp"
+          />
+        </FadeIn>
+
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Another card"
+            subtitle="Still tracked inside container"
+            imageUrl="/img/courses/framer-motion/product-2.webp"
+          />
+        </FadeIn>
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Inside container"
+            subtitle="Scroll me into view!"
+            imageUrl="/img/courses/framer-motion/product-1.webp"
+          />
+        </FadeIn>
+
+        <FadeIn containerRef={containerRef}>
+          <Card
+            title="Another card"
+            subtitle="Still tracked inside container"
+            imageUrl="/img/courses/framer-motion/product-2.webp"
+          />
+        </FadeIn>
+      </div>
     </div>
   );
 };
 
+type FadeInProps = {
+  children: React.ReactNode;
+  className?: string;
+  containerRef?: React.RefObject<HTMLDivElement | null>;
+};
 
-export default App
+const FadeIn = ({ children, className, containerRef }: FadeInProps) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    container: containerRef, // 👈 track scroll inside container
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.8, 1],
+    [0, 1, 1, 0]
+  );
+
+  return (
+    <motion.div ref={ref} className={className} style={{ opacity }}>
+      {children}
+    </motion.div>
+  );
+};
+
+export default ScrollContainer;

@@ -1,0 +1,24 @@
+import { motion, useMotionValue, useMotionValueEvent, useScroll } from "motion/react";
+import { useState } from "react";
+
+
+export const App = () => {
+
+  const { scrollYProgress, scrollXProgres, scrollX, scrollY } = useScroll()
+
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [xProgress, setXProgress] = useState(0);
+  const [yProgress, setYProgress] = useState(0);
+
+  useMotionValueEvent
+
+
+  return (
+    <div className="flex items-center justify-center h-full">
+Hello World
+    </div>
+  );
+};
+
+export default App;
