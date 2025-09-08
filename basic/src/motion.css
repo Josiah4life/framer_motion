@@ -1,0 +1,38 @@
+.motion {
+    background-color: rgb(55, 9, 9);
+    animation: orbit 14s linear infinite;
+    transform-origin: 200px 200px; /* distance from center */
+    border-radius: 50%;
+
+}
+
+@keyframes orbit {
+  0%   { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
+}
+
+
+/* @keyframes orbit {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+
+
+.circle {
+    animation: circle01 4s;
+}
+
+@keyframes circle01 {
+    0% 
+    { 
+        transform: rotate(0deg) translateX(20px) rotate(0deg);
+    
+    }
+
+    100% 
+
+    {
+        transform: rotate(360deg) translateX(20px) rotate(-360deg);
+    }
+}
