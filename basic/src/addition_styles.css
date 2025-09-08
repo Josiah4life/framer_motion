@@ -1,0 +1,28 @@
+:root {
+    background: #131018;
+}
+
+.form {
+    background-color: rgba(255,255,255,.1);
+    padding: 1.2rem;
+    border-radius: 999px;
+    font-size: 16px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr auto;
+    grid-template-columns: 1f r 120px;
+
+
+}
+
+.input {
+    height: 3rem;
+    border-radius: 999px 0px 0px 999px
+}
+
+.submit {
+    padding: 0.4rem 1.2rem;
+    height: 3rem;
+    background-color: #000;
+    border-radius: 0px 999px 999px 0px;
+}   
