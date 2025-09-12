@@ -35,3 +35,33 @@ export const App = () => {
 };
 
 export default App;
+
+//offset: [start, end]
+/**
+start -> when scrollYProgrss = 0
+end -> when scrollYProgress = 1
+
+Each string  "<target-edge> <container-edge>"
+Target edge = "start" | "center" | "end" → describes the tracked element (our ref div).
+Container edge = "start" | "center" | "end" → describes the container’s viewport (usually the screen, unless we set container).
+ */
+
+/**
+"start center" → progress = 0
+Means: when the start (top) of the target hits the center of the viewport.
+
+"end start" → progress = 1
+Means: when the end (bottom) of the target hits the start (top) of the viewport.
+ */
+
+/**
+["start end", "end start"]
+Start when the top of the target hits the bottom of the viewport.
+End when the bottom of the target hits the top of the viewport.
+ */
+
+/**
+["start start", "end end"]
+Start when top of target hits top of viewport.
+End when bottom of target hits bottom of viewport.
+ */
